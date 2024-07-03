@@ -21,9 +21,10 @@ const Layout = () => {
         <MobileNav />
         <UserMenu />
       </header>
-      <main className="flex-grow p-4 overflow-auto">
+      <main className="flex-grow p-4 overflow-auto bg-gray-50">
         <Outlet />
       </main>
+      <Footer />
     </div>
   );
 };
@@ -35,7 +36,7 @@ const DesktopNav = () => (
       className="flex items-center gap-2 text-lg font-semibold md:text-base"
     >
       <Package2 className="h-6 w-6" />
-      <span className="sr-only">Acme Inc</span>
+      <span className="sr-only">SaaS Product</span>
     </NavItem>
     {navItems.map((item) => (
       <NavItem key={item.to} to={item.to}>
@@ -60,7 +61,7 @@ const MobileNav = () => (
           className="flex items-center gap-2 text-lg font-semibold"
         >
           <Package2 className="h-6 w-6" />
-          <span className="sr-only">Acme Inc</span>
+          <span className="sr-only">SaaS Product</span>
         </NavItem>
         {navItems.map((item) => (
           <NavItem key={item.to} to={item.to}>
@@ -106,6 +107,40 @@ const NavItem = ({ to, children, className }) => (
   >
     {children}
   </NavLink>
+);
+
+const Footer = () => (
+  <footer className="bg-gray-800 text-white py-6">
+    <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+      <div className="mb-4 md:mb-0">
+        <NavLink to="/" className="text-lg font-semibold">
+          SaaS Product
+        </NavLink>
+      </div>
+      <div className="flex space-x-4">
+        <NavLink to="/about" className="hover:underline">
+          About
+        </NavLink>
+        <NavLink to="/contact" className="hover:underline">
+          Contact
+        </NavLink>
+        <NavLink to="/privacy" className="hover:underline">
+          Privacy Policy
+        </NavLink>
+      </div>
+      <div className="flex space-x-4 mt-4 md:mt-0">
+        <a href="#" className="hover:underline">
+          <i className="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" className="hover:underline">
+          <i className="fab fa-twitter"></i>
+        </a>
+        <a href="#" className="hover:underline">
+          <i className="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
 );
 
 export default Layout;
